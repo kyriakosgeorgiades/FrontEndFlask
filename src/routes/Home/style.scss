@@ -1,7 +1,14 @@
-// header {
-//     background: url('../../assets/images/cars_bg.jpg');
-//     height: 100vh;
-//     padding: 10px;
-//     // object-fit: contain;
-//     background-position: contain;
-// }
+.w__header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/images/cars_bg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.w__hero-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem !important;
+    text-align: center;
+}
