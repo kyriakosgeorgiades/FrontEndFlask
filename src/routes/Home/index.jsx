@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Box className="w__header" h="100vh">
       <Flex w="100%" pos="absolute" color="white" px="4em" pt="2em" justifyContent="space-between">
-        <Heading className="w__title" fontSize="3rem">C-Rentals</Heading>
+        <Heading fontSize="3rem">C-Rentals</Heading>
         <HStack spacing={20}>
           <Link to="/">
             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Cars</Text>

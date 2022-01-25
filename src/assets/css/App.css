@@ -13,3 +13,8 @@ body {
   font-size: 1.4rem;
 }
 
+.w__header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/images/cars_bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
