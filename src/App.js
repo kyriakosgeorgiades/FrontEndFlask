@@ -1,5 +1,5 @@
 import './assets/css/App.css';
-import Home from './routes/HomePage';
+import Home from './routes/Home';
 import FindCar from './routes/FindCar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
