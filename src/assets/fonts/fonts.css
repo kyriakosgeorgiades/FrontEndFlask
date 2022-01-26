@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Soleil';
+    src: local('SoleilRegular'), url('./SoleilRegular') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'regulator-nova';
+    src: local('RegularNova'), url('./RegularNova') format('truetype');
+    font-weight: normal;
+}
+  

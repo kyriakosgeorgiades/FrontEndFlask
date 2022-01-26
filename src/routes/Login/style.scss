@@ -1,0 +1,12 @@
+$primary_color: red;
+
+.w__login-container {
+
+    &.-title {
+        color: red;
+    }
+
+    p {
+        color: blue;
+    }
+}
