@@ -5,7 +5,6 @@ import './style.scss';
 export default function Home() {
   return (
     <Box h="100vh">
-      
     </Box>
   );
 }
