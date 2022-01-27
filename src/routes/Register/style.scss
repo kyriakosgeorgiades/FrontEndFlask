@@ -1,12 +1,7 @@
-$primary_color: red;
+body {background-color: gray.50;}
 
-.w__login-container {
+.w__login {
+    padding: 5px 0;
+    margin: 0 auto;
 
-    &.-title {
-        color: red;
-    }
-
-    p {
-        color: blue;
-    }
 }

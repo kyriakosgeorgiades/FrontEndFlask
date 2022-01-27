@@ -33,12 +33,12 @@ export default function Login() {
 
               <div className="w__login">
                 <FormControl isRequired>
-                  <FormLabel className="w__login-label" fontSize={24} htmlFor='email'>Email</FormLabel>
+                  <FormLabel className="w__login-label" fontSize={20} htmlFor='email'>Email</FormLabel>
                   <Input w='300px' size='lg' id='email' type='email' />
                 </FormControl>
 
                 <FormControl isRequired>
-                  <FormLabel mt={5} className="w__login-label" fontSize={24} htmlFor='password'>Password</FormLabel>
+                  <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='password'>Password</FormLabel>
                   <Input w='300px' size='lg' id='password' type='password' />
                 </FormControl>
 
