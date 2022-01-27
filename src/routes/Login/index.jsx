@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import Navigation from '../../components/Navigation';
-import { Flex, Input, Button, Box, Stack, Text, Heading, FormControl, FormLabel, FormErrorMessage, FormHelperText, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Input, Button, Box, Stack, Text, Heading, FormControl, FormLabel, useColorModeValue } from '@chakra-ui/react';
 import './style.scss';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
-
-  function handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault();
-  }
-
+    alert(`Email: ${email} & Password: ${password}`);
+  };
 
   return (
     <>
@@ -31,15 +27,15 @@ export default function Login() {
           <Box rounded={'lg'} bg={useColorModeValue('white', 'gray.700')} boxShadow={'lg'} p={10}>
             <Stack spacing={4}>
 
-              <div className="w__login">
+              <form className="w__login" onSubmit={handleSubmit}>
                 <FormControl isRequired>
                   <FormLabel className="w__login-label" fontSize={20} htmlFor='email'>Email</FormLabel>
-                  <Input w='300px' size='lg' id='email' type='email' />
+                  <Input w='300px' size='lg' id='email' type='email' onChange={event => setEmail(event.currentTarget.value)}/>
                 </FormControl>
 
                 <FormControl isRequired>
                   <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='password'>Password</FormLabel>
-                  <Input w='300px' size='lg' id='password' type='password' />
+                  <Input w='300px' size='lg' id='password' type='password' onChange={event => setPassword(event.currentTarget.value)}/>
                 </FormControl>
 
                 <Stack spacing={10}>
@@ -51,8 +47,7 @@ export default function Login() {
                     <Text mt='5' fontSize={13} _hover={{ textDecoration: 'underline', color: 'blue' }}>Don't have an account? Click here to register.</Text>
                   </Link>
                 </FormControl>
-
-              </div>
+              </form>
 
             </Stack>
           </Box>

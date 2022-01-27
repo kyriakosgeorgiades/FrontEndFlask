@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import Navigation from '../../components/Navigation';
-import { Flex, Input, Button, Box, Stack, HStack, Text, Heading, FormControl, FormLabel, FormErrorMessage, FormHelperText, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Input, Button, Box, Stack, HStack, Heading, FormControl, FormLabel, FormHelperText, useColorModeValue } from '@chakra-ui/react';
 import './style.scss';
 
 export default function Register() {
+  const [forename, setForename] = useState("");
+  const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm_password, setConfirmPassword] = useState("");
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
-  }
-
-  function handleSubmit(event) {
+  const handleSubmit = event => {
     event.preventDefault();
-  }
+    if (password === confirm_password) {
+      alert(`Forename: ${forename} & Surname: ${surname} & Email: ${email} & Password: ${password} & Confirm: ${confirm_password}`);
+    } else {
+      alert('Passwords must match.');
+    }
+  };
 
   return (
     <>
@@ -30,36 +33,36 @@ export default function Register() {
           <Box rounded={'lg'} bg={useColorModeValue('white', 'gray.700')} boxShadow={'lg'} p={10}>
             <Stack spacing={4}>
 
-              <div className="w__login">
+              <form className="w__login" onSubmit={handleSubmit}>
 
                 <HStack>
                   <Box>
                     <FormControl id="firstName" isRequired>
                       <FormLabel className="w__login-label" fontSize={20}>First Name</FormLabel>
-                      <Input type="text" />
+                      <Input type="text" onChange={event => setForename(event.currentTarget.value)} />
                     </FormControl>
                   </Box>
                   <Box>
                     <FormControl id="lastName">
                       <FormLabel className="w__login-label" fontSize={20}>Surname</FormLabel>
-                      <Input type="text" />
+                      <Input type="text" onChange={event => setSurname(event.currentTarget.value)} />
                     </FormControl>
                   </Box>
                 </HStack>
 
                 <FormControl isRequired>
                   <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='email'>Email Address</FormLabel>
-                  <Input w='300px' size='lg' id='email' type='email' />
+                  <Input w='300px' size='lg' id='email' type='email' onChange={event => setEmail(event.currentTarget.value)} />
                 </FormControl>
 
                 <FormControl isRequired>
                   <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='password'>Password</FormLabel>
-                  <Input w='300px' size='lg' id='password' type='password' />
+                  <Input w='300px' size='lg' id='password' type='password' onChange={event => setPassword(event.currentTarget.value)} />
                 </FormControl>
 
                 <FormControl isRequired>
                   <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='confirm_password'>Confirm Password</FormLabel>
-                  <Input w='300px' size='lg' id='confirm_password' type='password' />
+                  <Input w='300px' size='lg' id='confirm_password' type='password' onChange={event => setConfirmPassword(event.currentTarget.value)} />
                 </FormControl>
 
                 <Stack spacing={10}>
@@ -69,7 +72,7 @@ export default function Register() {
                 <FormControl isRequired>
                   <FormHelperText>By registering you accept to our user terms of service agreement.</FormHelperText>
                 </FormControl>
-              </div>
+              </form>
 
             </Stack>
           </Box>
