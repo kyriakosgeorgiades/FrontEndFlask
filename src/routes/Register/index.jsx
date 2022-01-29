@@ -79,7 +79,7 @@ export default function Register() {
                 </Stack>
 
                 <FormControl isRequired>
-                  <FormHelperText>By registering you accept to our user terms of service agreement.</FormHelperText>
+                  <FormHelperText>By registering you accept our user terms of service agreement.</FormHelperText>
                 </FormControl>
               </form>
 
