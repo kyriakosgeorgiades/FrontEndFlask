@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navigation from '../../components/Navigation';
-import { Flex, Input, Button, Box, Stack, HStack, Heading, FormControl, FormLabel, FormHelperText, useColorModeValue } from '@chakra-ui/react';
+import { Flex, Input, Button, Box, Stack, HStack, Heading, FormControl, FormLabel, FormHelperText, useColorModeValue, FormErrorMessage } from '@chakra-ui/react';
 import './style.scss';
 
 export default function Register() {
@@ -14,10 +14,18 @@ export default function Register() {
     event.preventDefault();
     if (password === confirm_password) {
       alert(`Forename: ${forename} & Surname: ${surname} & Email: ${email} & Password: ${password} & Confirm: ${confirm_password}`);
-    } else {
-      alert('Passwords must match.');
     }
   };
+
+  function displayError() {
+    if (!(password === confirm_password)) {
+      return (
+        <FormErrorMessage fontSize={14}>Passwords must match.</FormErrorMessage>
+      )
+    } else {
+      return <br/>
+    }
+  }
 
   return (
     <>
@@ -60,9 +68,10 @@ export default function Register() {
                   <Input w='300px' size='lg' id='password' type='password' onChange={event => setPassword(event.currentTarget.value)} />
                 </FormControl>
 
-                <FormControl isRequired>
+                <FormControl isRequired isInvalid={!(password === confirm_password)}>
                   <FormLabel mt={5} className="w__login-label" fontSize={20} htmlFor='confirm_password'>Confirm Password</FormLabel>
                   <Input w='300px' size='lg' id='confirm_password' type='password' onChange={event => setConfirmPassword(event.currentTarget.value)} />
+                  {displayError()}
                 </FormControl>
 
                 <Stack spacing={10}>
