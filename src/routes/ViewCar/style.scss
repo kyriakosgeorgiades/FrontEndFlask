@@ -1,0 +1,10 @@
+body {background-color: gray.50;}
+
+.w__car {
+    margin: 0 auto;
+
+    &-text {
+        margin-left: 25px;
+        font-size: 18px;
+    }
+}
