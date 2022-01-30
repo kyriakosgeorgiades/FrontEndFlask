@@ -40,6 +40,7 @@ export default function PricePrediction() {
           
           axios(options)
             .then(response => {
+                console.log(response)
                 alert("Success!")
             }).catch(error => {
                 console.error(error);
