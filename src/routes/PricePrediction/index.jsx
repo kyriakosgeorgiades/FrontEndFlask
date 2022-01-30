@@ -15,7 +15,6 @@ export default function PricePrediction() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(inputs);
         const options = {
             url: process.env.REACT_APP_PRICE_API_URL,
             method: 'POST',
