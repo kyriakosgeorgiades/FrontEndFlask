@@ -49,7 +49,7 @@ export default function Home() {
       <Navigation />
       <Box display="flex" justifyContent="center" alignItems="center">
         <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
-          <Heading fontSize="4rem" color="white" className="w__hero-title-text">Welcome to C-Rentals, get your dream car now!</Heading>
+          <Heading fontSize="4rem" color="white" className="w__hero-title-text" data-test-id="header">Welcome to C-Rentals, get your dream car now!</Heading>
           <HStack spacing={10}>
             <Link to="/">
               <Box py={5} px={20} border="1px solid white" borderRadius="30" className="c__hero-btn-left">
