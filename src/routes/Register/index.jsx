@@ -52,11 +52,7 @@ class Register extends React.Component {
               <FormErrorMessage fontSize={14}>Passwords must match.</FormErrorMessage>
             </>
           )
-        } else {
-          return <br />
         }
-      } else {
-        return <br />
       }
     }
 
