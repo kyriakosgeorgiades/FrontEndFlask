@@ -27,3 +27,7 @@ a {
 .clearfix {
   clear: both;
 }
+
+input, select {
+  cursor: none !important;
+}
