@@ -1,10 +1,11 @@
 import React from 'react';
-import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { Box, Heading, HStack, SimpleGrid, Stack, Text, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Navigation from '../../components/Navigation';
+import CarCardItem from '../../components/CarCardItem';
 
 export default function Home() {
   const boxRef = React.useRef();
@@ -65,9 +66,22 @@ export default function Home() {
         </Stack>
       </Box>
     </Box>
-    <Box h="100vh" bg="red">
-    <Text>Section 1</Text>
-  </Box>
+    <Box>
+      <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
+        <CarCardItem />
+        <CarCardItem />
+        <CarCardItem />
+        <CarCardItem />
+        <CarCardItem />
+        <CarCardItem />
+      </SimpleGrid>
+    </Box>
+    <Box bg="black">
+      <HStack pt="2em" px="4em" justifyContent="space-between">
+        <Text color="white" fontSize="1.6rem">Copyright 2022</Text>
+        <Text color="white" fontSize="1.6rem">C-Rentals.</Text>
+      </HStack>
+    </Box>
     </>
   );
 }
