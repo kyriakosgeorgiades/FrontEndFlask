@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { Box, Heading, HStack, SimpleGrid, Stack, Text, Image } from '@chakra-ui/react';
+import { Link as ReactLink, animateScroll as scroll } from "react-scroll";
 import { Link } from 'react-router-dom';
 import './style.scss';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Navigation from '../../components/Navigation';
+import CarCardItem from '../../components/CarCardItem';
 
 export default function Home() {
   const boxRef = React.useRef();
@@ -49,13 +51,13 @@ export default function Home() {
       <Navigation />
       <Box display="flex" justifyContent="center" alignItems="center">
         <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
-          <Heading fontSize="4rem" color="white" className="w__hero-title-text">Welcome to C-Rentals, get your dream car now!</Heading>
+          <Heading fontSize="4rem" color="white" className="w__hero-title-text" data-test-id="header">Welcome to C-Rentals, get your dream car now!</Heading>
           <HStack spacing={10}>
-            <Link to="/">
+            <ReactLink to="car-listings" smooth={true} duration={500}>
               <Box py={5} px={20} border="1px solid white" borderRadius="30" className="c__hero-btn-left">
                 <Text color="white" fontWeight="bold">VIEW LISTINGS</Text>
               </Box>
-            </Link>
+            </ReactLink>
             <Link to="/">
               <Box py={5} px={20} bg="white" border="1px solid white" borderRadius="30" className="c__hero-btn-right">
                 <Text color="black" fontWeight="bold">FIND A CAR</Text>
@@ -65,9 +67,24 @@ export default function Home() {
         </Stack>
       </Box>
     </Box>
-    <Box h="100vh" bg="red">
-    <Text>Section 1</Text>
-  </Box>
+    <Box id="car-listings">
+      <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
+        <CarCardItem />
+        <CarCardItem />
+        <CarCardItem />
+      </SimpleGrid>
+      <Link to="/">
+        <Box py={5} px={20} border="1px solid black" maxWidth="30%" textAlign="center" m="0 auto" mb="5em" className="c__hero-btn-left">
+          <Text color="black" fontWeight="bold">View More</Text>
+        </Box>
+      </Link>
+    </Box>
+    <Box bg="black">
+      <HStack pt="2em" px="4em" justifyContent="space-between">
+        <Text color="white" fontSize="1.6rem">Copyright 2022</Text>
+        <Text color="white" fontSize="1.6rem">C-Rentals.</Text>
+      </HStack>
+    </Box>
     </>
   );
 }

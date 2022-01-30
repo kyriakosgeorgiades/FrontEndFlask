@@ -5,6 +5,7 @@ import CustomCursor from "./components/CustomCursor";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import PricePrediction from './routes/PricePrediction';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/check-price" element={<PricePrediction />} />
           <Route path="/find-car" element={<FindCar />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
