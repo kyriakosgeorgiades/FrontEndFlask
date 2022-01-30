@@ -14,6 +14,8 @@ export default function Register() {
     event.preventDefault();
     if (password === confirm_password) {
       alert(`Forename: ${forename} & Surname: ${surname} & Email: ${email} & Password: ${password} & Confirm: ${confirm_password}`);
+    } else {
+      alert('Passwords must match.');
     }
   };
 
