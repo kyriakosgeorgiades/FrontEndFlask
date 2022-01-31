@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Flex, Input, Button, Box, Stack, Text, Heading, FormControl, FormLabel, useColorModeValue } from '@chakra-ui/react';
 import './style.scss';
 
-import Navigation from '../../components/Navigation';
+import Header from '../../components/Header';
 
 import UserContext from '../../contexts/user';
 
@@ -28,9 +28,7 @@ export default function Login() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.700', 'gray.700')} h="7.5vh" pos="relative">
-        <Navigation />
-      </Box>
+      <Header />
 
       <Flex minH={'92.5vh'} align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
         <Stack>
