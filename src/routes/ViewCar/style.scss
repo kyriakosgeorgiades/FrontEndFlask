@@ -3,8 +3,27 @@ body {background-color: gray.50;}
 .w__car {
     margin: 0 auto;
 
+    &-link {
+        width: fit-content;
+        margin-left: 25px;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    &-title {
+        font-weight: bold;
+        margin-left: 25px;
+        font-size: 24px;
+    } 
+
+    &-subtitle {
+        font-weight: bold;
+        margin-left: 25px;
+        font-size: 18px;
+    } 
+
     &-text {
         margin-left: 25px;
         font-size: 18px;
-    }
+    } 
 }
