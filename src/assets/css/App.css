@@ -23,3 +23,11 @@ body {
 a {
   cursor: none !important;
 }
+
+.clearfix {
+  clear: both;
+}
+
+input, select {
+  cursor: none !important;
+}

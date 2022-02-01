@@ -11,10 +11,13 @@ export default function Navigation() {
                 <Link to="/">
                     <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Cars</Text>
                 </Link>
-                <Link to="/">
+                <Link to="/check-price">
+                    <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Check Price</Text>
+                </Link>
+                <Link to="/login">
                     <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Login</Text>
                 </Link>
-                <Link to="/">
+                <Link to="/register">
                     <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Register</Text>
                 </Link>
             </HStack>

@@ -5,8 +5,11 @@ import Header from '../components/Header';
 export default function FindCar() {
   return (
     <>
-      <Header />
-      <Box>Test</Box>
+      <Header title="Login"/>
+      <Box>
+        <input type="text" className="text" />
+        <button>Submit</button>
+      </Box>
     </>
   );
 }
