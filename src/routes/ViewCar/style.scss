@@ -5,25 +5,43 @@ body {background-color: gray.50;}
 
     &-link {
         width: fit-content;
+        font-weight: bold;
+        color: blue;
         margin-left: 25px;
         margin-top: 20px;
         font-size: 14px;
     }
 
     &-title {
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
-        margin-left: 25px;
-        font-size: 24px;
+        font-size: 48px;
     } 
 
     &-subtitle {
+        font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
-        margin-left: 25px;
-        font-size: 18px;
+        font-size: 24px;
     } 
 
     &-text {
+        font-family: Arial, Helvetica, sans-serif;
         margin-left: 25px;
         font-size: 18px;
+    } 
+}
+
+.w__image {
+
+    &-large {
+        max-height: 500px;
+        max-width: 28vw;
+        border: 2px solid #555;
+    } 
+
+    &-small {
+        max-height: 15vh;
+        max-width: 15vw;
+        border: 2px solid #555;
     } 
 }
