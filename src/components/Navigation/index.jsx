@@ -6,7 +6,9 @@ import './style.scss';
 export default function Navigation() {
   return (
         <Flex w="100%" pos="absolute" color="white" px="4em" pt="2em" justifyContent="space-between">
-            <Heading fontSize="3rem">C-Rentals</Heading>
+            <Link to="/">
+              <Heading fontSize="3rem">C-Rentals</Heading>  
+            </Link>
             <HStack spacing={20}>
                 <Link to="/">
                     <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Cars</Text>
