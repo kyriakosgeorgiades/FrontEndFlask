@@ -21,6 +21,7 @@ export default function FindCar() {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(response);
+            alert("Success!");
         } catch(error) {
             console.log(error)
         }
