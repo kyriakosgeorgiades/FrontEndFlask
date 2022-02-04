@@ -8,7 +8,7 @@ export default function Header({ title }) {
             <Navigation />
             <Box display="flex" justifyContent="center" alignItems="center">
                 <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
-                    <Heading fontSize="4rem" color="white" className="w__hero-title-text">{title}</Heading>
+                    <Heading data-testid="header-title" fontSize="4rem" color="white" className="w__hero-title-text">{title}</Heading>
                 </Stack>
             </Box>
         </Box>

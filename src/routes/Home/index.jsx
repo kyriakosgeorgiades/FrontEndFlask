@@ -58,7 +58,7 @@ export default function Home() {
                 <Text color="white" fontWeight="bold">VIEW LISTINGS</Text>
               </Box>
             </ReactLink>
-            <Link to="/find-car">
+            <Link to="/find-car" data-testid="find-car-btn">
               <Box py={5} px={20} bg="white" border="1px solid white" borderRadius="30" className="c__hero-btn-right">
                 <Text color="black" fontWeight="bold">FIND A CAR</Text>
               </Box>
