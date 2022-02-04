@@ -51,7 +51,7 @@ export default function ViewCar() {
           <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
 
             <Stack align='center' spacing='24px'>
-              <Text className="w__car-subtitle">View other similar cars</Text>
+              <Text className="w__car-subtitle">View other similar cars:</Text>
               <Image className="w__image-small" src={test_json.cars[0].image} alt={test_json.cars[0].model} />
               <Image className="w__image-small" src={test_json.cars[0].image} alt={test_json.cars[0].model} />
               <Image className="w__image-small" src={test_json.cars[0].image} alt={test_json.cars[0].model} />
