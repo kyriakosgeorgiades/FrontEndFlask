@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 
 export default function PricePrediction() {
     const [inputs, setInputs] = React.useState({});  
-    const [predictedPrice, setPredictedPrice] = React.useState(450);
+    const [predictedPrice, setPredictedPrice] = React.useState("");
 
     function handleForm(e) {
         const name = e.target.name;
