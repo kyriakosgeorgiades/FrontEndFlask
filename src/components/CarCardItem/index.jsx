@@ -31,7 +31,7 @@ export default function CarCardItem() {
               <Text>2300 kmpl</Text>
             </HStack>
             <Box align="right" pt="1.5em">
-              <Link to="">
+              <Link to="/cars/12">
                 <ArrowForwardIcon w={8} h={8} color="black.500" />
               </Link>
             </Box>
