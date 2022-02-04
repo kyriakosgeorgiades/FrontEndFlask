@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 
 export default function PricePrediction() {
     const [inputs, setInputs] = React.useState({});  
-    const [predictedPrice, setPredictedPrice] = React.useState("");
+    const [predictedPrice, setPredictedPrice] = React.useState(450);
 
     function handleForm(e) {
         const name = e.target.name;
@@ -42,7 +42,7 @@ export default function PricePrediction() {
           axios(options)
             .then(response => {
                 console.log(response)
-                setPredictedPrice(response.data.price || 0)
+                setPredictedPrice(response.data.Price || 0)
                 alert("Success!")
             }).catch(error => {
                 console.error(error);
