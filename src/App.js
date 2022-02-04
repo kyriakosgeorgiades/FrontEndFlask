@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './routes/Home';
-import FindCar from './routes/FindCar';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import PricePrediction from './routes/PricePrediction';
@@ -12,6 +11,8 @@ import PricePrediction from './routes/PricePrediction';
 import CustomCursor from "./components/CustomCursor";
 
 import UserContext from './contexts/user';
+import Cars from './routes/Cars/list';
+import CarDetails from './routes/Cars/details';
 
 function App() {
   const [user, setUser] = useState([]);
@@ -39,7 +40,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/check-price" element={<PricePrediction />} />
-            <Route path="/find-car" element={<FindCar />} />
+            <Route path="/cars" element={<Cars />} />
+            <Route path="/cars/:id" element={<CarDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

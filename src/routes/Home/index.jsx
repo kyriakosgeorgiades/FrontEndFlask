@@ -73,7 +73,7 @@ export default function Home() {
         <CarCardItem />
         <CarCardItem />
       </SimpleGrid>
-      <Link to="/">
+      <Link to="/cars">
         <Box py={5} px={20} border="1px solid black" maxWidth="30%" textAlign="center" m="0 auto" mb="5em" className="c__hero-btn-left">
           <Text color="black" fontWeight="bold">View More</Text>
         </Box>
