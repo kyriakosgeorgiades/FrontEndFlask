@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 
 export default function PricePrediction() {
     const [inputs, setInputs] = React.useState({});  
+    const [predictedPrice, setPredictedPrice] = React.useState("");
 
     function handleForm(e) {
         const name = e.target.name;
@@ -41,6 +42,7 @@ export default function PricePrediction() {
           axios(options)
             .then(response => {
                 console.log(response)
+                setPredictedPrice(response.data.Price || 0)
                 alert("Success!")
             }).catch(error => {
                 console.error(error);
@@ -77,14 +79,15 @@ export default function PricePrediction() {
                     <option value='fourth owner and above'>Fourth Owner &amp; Above</option>
                     <option value='test drive car'>Test Drive Car</option>
                 </Select>
-                <Input placeholder='Mileage' name='mileage' value={inputs.mileage || ""} onChange={ e => handleForm(e)} size='lg' />
-                <Input placeholder='Engine' name='engine' size='lg' value={inputs.engine || ""} onChange={ e => handleForm(e)} />
-                <Input placeholder='Max Power' name='max_power' value={inputs.max_power || ""} onChange={ e => handleForm(e)} size='lg' />
+                <Input placeholder='Mileage (Kmpl)' name='mileage' value={inputs.mileage || ""} onChange={ e => handleForm(e)} size='lg' />
+                <Input placeholder='Engine (cc)' name='engine' size='lg' value={inputs.engine || ""} onChange={ e => handleForm(e)} />
+                <Input placeholder='Max Power (bhp)' name='max_power' value={inputs.max_power || ""} onChange={ e => handleForm(e)} size='lg' />
                 <Input placeholder='Torque' name='torque' value={inputs.torque || ""} onChange={ e => handleForm(e)} size='lg' />
                 <Input placeholder='Seats' name='seats' value={inputs.seats || ""} onChange={ e => handleForm(e)} size='lg' />
                 <Box onClick={handleSubmit} py={3} px={20} border="1px solid black" textAlign="center" m="0 auto" mb="5em">
                     <Text color="black" fontWeight="bold">Submit</Text>
                 </Box>
+                {predictedPrice && <Text fontWeight="bold">Predicted Price: £{predictedPrice}</Text>}
             </Stack>
         </Box>
       </>
