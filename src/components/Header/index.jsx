@@ -4,7 +4,7 @@ import Navigation from '../Navigation';
 
 export default function Header({ title }) {
   return (
-        <Box className="w__header" h="15vh" pos="relative">
+        <Box className="w__header" h="7.5vh" pos="relative">
             <Navigation />
             <Box display="flex" justifyContent="center" alignItems="center">
                 <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
