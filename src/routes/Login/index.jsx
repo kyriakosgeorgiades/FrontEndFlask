@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Flex, Input, Button, Box, Stack, Text, Heading, FormControl, FormLabel, useColorModeValue } from '@chakra-ui/react';
 import './style.scss';
 
@@ -20,10 +21,40 @@ export default function Login() {
 
   const handleSubmit = event => {
     event.preventDefault();
+
+    /*
     alert(`Email: ${inputs.email} & Password: ${inputs.password}`);
     let user = JSON.parse(`{ "email":"${inputs.email}" , "password":"${inputs.password}" }`);
     dispatchUserEvent('LOGIN', { User: user });
     navigate('/');
+    */
+
+    const options = {
+      url: process.env.REACT_APP_LOGIN,
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      data: {
+        email: inputs.email,
+        password: inputs.password
+      }
+    };
+
+    axios(options)
+      .then(response => {
+        if (response.status === 200) {
+          console.log(response)
+          dispatchUserEvent('LOGIN', { User: response.user_id });
+          navigate('/');
+        } else {
+          alert(response.message);
+        }
+      }).catch(error => {
+        console.error(error);
+        alert("System error!");
+      });
   };
 
   return (
