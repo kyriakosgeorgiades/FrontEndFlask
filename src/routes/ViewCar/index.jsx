@@ -70,17 +70,19 @@ export default function ViewCar() {
           <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
             <Stack align='center' spacing='24px'>
               <Text className="w__car-subtitle">Potential alternatives:</Text>
-              <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" borderRadius="10" bg='white'>
-                <Image src={alt_car.image_url} alt={alt_car.model} objectFit="cover" width="100%" maxWidth='418px' height='300px' />
-                <Stack py="2em" mx="10">
-                  <HStack justify="space-between">
-                    <Text fontWeight="bold">Car: </Text>
-                    <Text>Toyota Venza</Text>
-                    <Text fontWeight="bold">Mileage: </Text>
-                    <Text>2300 kmpl</Text>
-                  </HStack>
-                </Stack>
-              </Box>
+              <Link to={'/cars/' + alt_car.car_id}>
+                <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" borderRadius="10" bg='white'>
+                  <Image src={alt_car.image_url} alt={alt_car.model} objectFit="cover" width="100%" maxWidth='418px' height='300px' />
+                  <Stack py="2em" mx="10">
+                    <HStack justify="space-between">
+                      <Text fontWeight="bold">Car: </Text>
+                      <Text>Toyota Venza</Text>
+                      <Text fontWeight="bold">Mileage: </Text>
+                      <Text>2300 kmpl</Text>
+                    </HStack>
+                  </Stack>
+                </Box>
+              </Link>
             </Stack>
           </Flex>
         </>
