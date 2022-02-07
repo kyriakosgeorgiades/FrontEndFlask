@@ -12,59 +12,53 @@ export default function ViewCar() {
   const [status, setStatus] = React.useState(null);
   const { id } = useParams();
 
-  function requestCar() {
-    const options = {
-      url: process.env.REACT_APP_VIEW_CAR + id,
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8'
-      }
-    };
-
-    axios(options)
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.data.cars[0])
-          setCar(response.data.cars[0])
-          setStatus(response.status)
-        } else {
-          alert(response.message);
-        }
-      }).catch(error => {
-        console.error(error);
-        alert("System error during car info request.");
-      });
-  }
-
-  function requestAlternatives() {
-    const options = {
-      url: REACT_APP_SIMILAR_CARS + "?id=" + car.id,
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8'
-      }
-    };
-
-    axios(options)
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.data.cars)
-          setAlternatives(response.data.cars)
-        } else {
-          alert(response.message);
-        }
-      }).catch(error => {
-        console.error(error);
-        alert("System error during alternative cars request.");
-      });
-  }
-
   useEffect(() => {
     if (!status) {
-      requestCar();
-      requestAlternatives();
+      const options = {
+        url: process.env.REACT_APP_VIEW_CAR + id,
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      };
+
+      axios(options)
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response.data.cars[0])
+            setCar(response.data.cars[0])
+            setStatus(response.status)
+            
+            const options = {
+              url: "http://127.0.0.1:5000/car/similar?id=" + response.data.cars[0].car_id,
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+              }
+            };
+
+            axios(options)
+              .then(response => {
+                if (response.status === 200) {
+                  console.log(response.data)
+                  setAlternatives(response.data)
+                } else {
+                  alert(response.message);
+                }
+              }).catch(error => {
+                console.error(error);
+                alert("System error during alternative cars request.");
+              });
+
+          } else {
+            alert(response.message);
+          }
+        }).catch(error => {
+          console.error(error);
+          alert("System error during car info request.");
+        });
     }
   }, [status, id]);
 
