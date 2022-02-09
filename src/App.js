@@ -14,6 +14,7 @@ import CustomCursor from "./components/CustomCursor";
 import UserContext from './contexts/user';
 import Cars from './routes/Cars/list';
 import FindCar from './routes/FindCar';
+import AdminDashboard from './routes/Admin/Dashboard';
 
 function App() {
   const [user, setUser] = useState([]);
@@ -46,6 +47,10 @@ function App() {
             <Route path="/find-car" element={<FindCar />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/manage-listings" element={<PricePrediction />} />
           </Routes>
         </BrowserRouter>
       </>
