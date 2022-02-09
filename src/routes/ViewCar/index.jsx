@@ -11,6 +11,55 @@ export default function ViewCar() {
   const [alternative_cars, setAlternatives] = React.useState([]);
   const [status, setStatus] = React.useState(null);
   const { id } = useParams();
+  
+  function displayAlternatives(index) {
+    if (alternative_cars[index]) {
+      return (
+        <>
+          <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
+            <Stack align='center' spacing='24px'>
+              <Link onClick={"update render"} to={'/cars/' + alternative_cars[index].car_id}>
+                <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" borderRadius="10" bg='white'>
+                  <Image src={alternative_cars[index].image_url} alt={alternative_cars[index].model} objectFit="cover" w='450px' maxH='350px' />
+                  <Stack py="2em" mx="10">
+                    <HStack justify="space-between">
+                      <Text fontWeight="bold">Car: </Text>
+                      <Text>{alternative_cars[index].brand + " " + alternative_cars[index].model}</Text>
+                      <Text fontWeight="bold">Price: </Text>
+                      <Text>£{alternative_cars[index].price}</Text>
+                    </HStack>
+                    <HStack justify="space-between">
+                      <Text fontWeight="bold">Mileage: </Text>
+                      <Text>{alternative_cars[index].km_driven}</Text>
+                      <Text />
+                      <Text />
+                      <Text fontWeight="bold">Year: </Text>
+                      <Text>{alternative_cars[index].year}</Text>
+                    </HStack>
+                    <Spacer />
+                    <Text align='center' fontWeight="bold">{alternative_cars[index].suggestion_title}:</Text>
+                    <Text align='center'>{alternative_cars[index].suggestion_reason}</Text>
+                  </Stack>
+                </Box>
+              </Link>
+            </Stack>
+          </Flex>
+        </>
+      )
+    } else {
+      if (index === 0) {
+        return (
+          <>
+            <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
+              <Stack align='center' spacing='24px'>
+                <Text className="w__car-text">No alternatives found</Text>
+              </Stack>
+            </Flex>
+          </>
+        )
+      }
+    }
+  };
 
   useEffect(() => {
     if (!status) {
@@ -42,8 +91,8 @@ export default function ViewCar() {
             axios(options)
               .then(response => {
                 if (response.status === 200) {
-                  console.log(response.data)
-                  setAlternatives(response.data)
+                  console.log(response.data.cars)
+                  setAlternatives(response.data.cars)
                 } else {
                   alert(response.message);
                 }
@@ -62,48 +111,6 @@ export default function ViewCar() {
     }
   }, [status, id]);
 
-  function displayAlternatives() {
-    let card_items = null;
-    for (const alt_car in alternative_cars) {
-      card_items = card_items + (
-        <>
-          <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
-            <Stack align='center' spacing='24px'>
-              <Text className="w__car-subtitle">Potential alternatives:</Text>
-              <Link to={'/cars/' + alt_car.car_id}>
-                <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" borderRadius="10" bg='white'>
-                  <Image src={alt_car.image_url} alt={alt_car.model} objectFit="cover" width="100%" maxWidth='418px' height='300px' />
-                  <Stack py="2em" mx="10">
-                    <HStack justify="space-between">
-                      <Text fontWeight="bold">Car: </Text>
-                      <Text>Toyota Venza</Text>
-                      <Text fontWeight="bold">Mileage: </Text>
-                      <Text>2300 kmpl</Text>
-                    </HStack>
-                  </Stack>
-                </Box>
-              </Link>
-            </Stack>
-          </Flex>
-        </>
-      )
-    }
-    if (!card_items) {
-      return card_items;
-    } else {
-      return (
-        <>
-          <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
-            <Stack align='center' spacing='24px'>
-              <Text className="w__car-subtitle">Potential alternatives:</Text>
-              <Text className="w__car-text">No alternatives found</Text>
-            </Stack>
-          </Flex>
-        </>
-      )
-    }
-  };
-
   return (
     <>
       <Header />
@@ -116,11 +123,11 @@ export default function ViewCar() {
           </Link>
 
           <HStack mt='25px'>
-            <Image className="w__image-large" ml='1vw' src={car.image_url} alt={car.model} />
+            <Image className="w__image-large" ml='1vw' mr='50px' src={car.image_url} alt={car.model} />
             <Flex h='400px' w='20vw' mr='1vw'>
               <Stack w='20vw' align={'center'}>
                 <Spacer />
-                <Text className="w__car-title">{car.brand} {car.model}</Text>
+                <Text className="w__car-title" align={'center'}>{car.brand} {car.model}</Text>
                 <Text className="w__car-subtitle">{car.year}</Text>
                 <Spacer />
                 <Text className="w__car-subtitle">Available at:</Text>
@@ -190,7 +197,13 @@ export default function ViewCar() {
         </Box>
 
         <Box w='25vw' h='92.5vh' bg='gray.200' justifyContent='center'>
-          {displayAlternatives()}
+          <Flex ml='5vw' mr='5vw' mt='35px' justifyContent='center'>
+            <Stack align='center' spacing='15px'>
+              <Text className="w__car-subtitle">Potential alternatives:</Text>
+            </Stack>
+          </Flex>
+          {displayAlternatives(0)}
+          {displayAlternatives(1)}
         </Box>
 
 
