@@ -3,12 +3,23 @@ import axios from 'axios';
 import React from 'react';
 import { useLocation } from 'react-router';
 import Header from '../../components/Header';
+import Lottie from 'react-lottie';
+import animationData from '../../lotties/car-dashboard.json';
 
 export default function SellCar() {
     const [inputs, setInputs] = React.useState({});  
     const [predictedPrice, setPredictedPrice] = React.useState("");
 
     let location = useLocation();
+
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+    };
 
     function handleForm(e) {
         const name = e.target.name;
@@ -58,8 +69,13 @@ export default function SellCar() {
   return (
       <>
         <Header title="Sell Car" />
-        <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" py="5em" m="0 auto" borderRadius="10" p="4em 2em" my="3em"  maxWidth="50%">
-            <Stack spacing="10">
+        <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" py="5em" m="0 auto" borderRadius="10" p="4em 2em" my="5em"  maxWidth="50%">
+            <Lottie 
+                options={defaultOptions}
+                height={50}
+                width={50}
+            />
+            <Stack spacing="10" mt="2em">
                 <HStack spacing="10">
                     <Input placeholder='Name' name="name" value={inputs.name || ""} onChange={ e => handleForm(e)} size='lg' />
                     <Input placeholder='Brand' name="brand" value={inputs.brand || ""} onChange={ e => handleForm(e)} size='lg' />
