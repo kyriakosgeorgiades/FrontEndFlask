@@ -32,54 +32,56 @@ export default function PricePrediction() {
      */
     function handleSubmit(e) {
         e.preventDefault();
-        navigate("/sell-car", { replace: false, state: {
-                data: {
-                    year: inputs.year,
-                     "km-driven": inputs.km_driven,
-                     fuel: inputs.fuel,
-                     seller_type: inputs.seller_type,
-                     transmission: inputs.transmission,
-                     owner: inputs.owner,
-                     mileage :  inputs.mileage,
-                     engine: inputs.engine,
-                     max_power: inputs.max_power,
-                     torque: inputs.torque,
-                     seats: inputs.seats
-                }
+    
+        const options = {
+            url: process.env.REACT_APP_PRICE_API_URL,
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: {
+                year: inputs.year,
+                 "km-driven": inputs.km_driven,
+                 fuel: inputs.fuel,
+                 seller_type: inputs.seller_type,
+                 transmission: inputs.transmission,
+                 owner: inputs.owner,
+                 mileage :  inputs.mileage,
+                 engine: inputs.engine,
+                 max_power: inputs.max_power,
+                 torque: inputs.torque,
+                 seats: inputs.seats,
             }
-        });
-        // const options = {
-        //     url: process.env.REACT_APP_PRICE_API_URL,
-        //     method: 'POST',
-        //     headers: {
-        //       'Accept': 'application/json',
-        //       'Content-Type': 'application/json;charset=UTF-8'
-        //     },
-        //     data: {
-        //         year: inputs.year,
-        //          "km-driven": inputs.km_driven,
-        //          fuel: inputs.fuel,
-        //          seller_type: inputs.seller_type,
-        //          transmission: inputs.transmission,
-        //          owner: inputs.owner,
-        //          mileage :  inputs.mileage,
-        //          engine: inputs.engine,
-        //          max_power: inputs.max_power,
-        //          torque: inputs.torque,
-        //          seats: inputs.seats,
-        //     }
             
-        //   };
+          };
           
-        //   axios(options)
-        //     .then(response => {
-        //         console.log(response)
-        //         setPredictedPrice(response.data.Price || 0)
-        //         alert("Success!")
-        //     }).catch(error => {
-        //         console.error(error);
-        //         alert("Error!")
-        //     });
+          axios(options)
+            .then(response => {
+                console.log(response)
+                setPredictedPrice(response.data.Price || 0)
+                navigate("/sell-car", { replace: false, state: {
+                        data: {
+                            year: inputs.year,
+                             "km-driven": inputs.km_driven,
+                             fuel: inputs.fuel,
+                             seller_type: inputs.seller_type,
+                             transmission: inputs.transmission,
+                             owner: inputs.owner,
+                             mileage :  inputs.mileage,
+                             engine: inputs.engine,
+                             max_power: inputs.max_power,
+                             torque: inputs.torque,
+                             seats: inputs.seats,
+                            price: response.data.Price || 0
+                        }
+                    }
+                });
+                alert("Success!")
+            }).catch(error => {
+                console.error(error);
+                alert("Error!")
+            });
     } 
 
   return (

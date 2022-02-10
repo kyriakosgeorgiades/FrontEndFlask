@@ -132,7 +132,10 @@ export default function SellCar() {
                     <Input placeholder='Max Power (bhp)' name='max_power' value={inputs.max_power || location?.state?.data.max_power || ""} onChange={ e => handleForm(e)} size='lg' />
                     <Input placeholder='Torque' name='torque' value={inputs.torque || location?.state?.data.torque || ""} onChange={ e => handleForm(e)} size='lg' />
                 </HStack>
-                <Input placeholder='Seats' name='seats' value={inputs.seats || location?.state?.data.seats || ""} onChange={ e => handleForm(e)} size='lg' />
+                <HStack spacing="10">
+                    <Input placeholder='Seats' name='price' value={inputs.price || location?.state?.data.price || ""} onChange={ e => handleForm(e)} size='lg' />
+                    <Input placeholder='Seats' name='seats' value={inputs.seats || location?.state?.data.seats || ""} onChange={ e => handleForm(e)} size='lg' />
+                </HStack>
                 <Box onClick={handleSubmit} py={3} px={20} border="1px solid black" textAlign="center" m="0 auto" mb="5em">
                     <Text color="black" fontWeight="bold">Submit</Text>
                 </Box>
