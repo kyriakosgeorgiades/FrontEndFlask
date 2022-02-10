@@ -12,6 +12,7 @@ export default function SellCar() {
 
     let location = useLocation();
 
+    // This handles initializing the lottie animation
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -21,6 +22,12 @@ export default function SellCar() {
         }
     };
 
+    /**
+     * This function handles updating the input values
+     * 
+     * @param {Event} e 
+     * @return {Void}
+     */
     function handleForm(e) {
         const name = e.target.name;
         const value = e.target.value;
@@ -28,6 +35,13 @@ export default function SellCar() {
 
     } 
 
+     /**
+     * This function handles calling the api to 
+     * sell a car
+     * 
+     * @param {Event} e 
+     * @return {Void}
+     */
     function handleSubmit(e) {
         e.preventDefault();
         const options = {

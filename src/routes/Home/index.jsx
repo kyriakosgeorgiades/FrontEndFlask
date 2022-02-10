@@ -9,7 +9,7 @@ import Navigation from '../../components/Navigation';
 import CarCardItem from '../../components/CarCardItem';
 
 export default function Home() {
-  const boxRef = React.useRef();
+  const boxRef = React.useRef(); // This variable helps to target the DOM elements for the landing page animation
   gsap.registerPlugin(ScrollTrigger);
 
   React.useEffect(() => {
@@ -35,6 +35,7 @@ export default function Home() {
     //   }
     // });
   },[]);
+
 
   React.useEffect(() => {
     // eslint-disable-next-line

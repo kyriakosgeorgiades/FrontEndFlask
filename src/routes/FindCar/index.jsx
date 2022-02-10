@@ -10,7 +10,14 @@ export default function FindCar() {
     const [selectedFile, setSelectedFile] = React.useState(null);
     const [carTitle, setCarTitle] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
-
+    
+    /**
+     * This function handles calling the api to 
+     * search for the car based on the image provided
+     * 
+     * @param {Event} event 
+     * @return {Promise<void>}
+     */
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -34,10 +41,22 @@ export default function FindCar() {
         }
     }
 
+    /**
+     * This function handles updating the 
+     * value for the selected file
+     * 
+     * @param {Event} event 
+     * @return {void}
+     */
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
     }
 
+    /**
+     * This function handles searching of a car
+     * 
+     * @return {void}
+     */
     const handleSearch = () => {
         navigate(`/cars/${carTitle}`, { replace: false } );
     }

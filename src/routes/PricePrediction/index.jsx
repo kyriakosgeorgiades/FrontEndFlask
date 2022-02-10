@@ -10,6 +10,12 @@ export default function PricePrediction() {
     const [predictedPrice, setPredictedPrice] = React.useState("");
     
 
+     /**
+     * This function handles updating the input values
+     * 
+     * @param {Event} e 
+     * @return {Void}
+     */
     function handleForm(e) {
         const name = e.target.name;
         const value = e.target.value;
@@ -17,6 +23,13 @@ export default function PricePrediction() {
         
     } 
 
+     /**
+     * This function handles calling the api to 
+     * get the predicted price based on the fields provided
+     * 
+     * @param {Event} e 
+     * @return {Void}
+     */
     function handleSubmit(e) {
         e.preventDefault();
         navigate("/sell-car", { replace: false, state: {
