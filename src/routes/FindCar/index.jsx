@@ -64,7 +64,7 @@ export default function FindCar() {
   return (
         <>
             <Header title="Find Car" />
-            <Box py="5em" m="0 auto" height="85vh" maxWidth="30%">
+            <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" py="5em" m="0 auto" borderRadius="10" p="4em 2em" my="3em"  maxWidth="50%">
                 <Input placeholder='Car Title' value={carTitle || ""} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} onChange={ e => setCarTitle(e.target.value)} size='lg' mb="2em" />
                 <input type="file" className="custom-file-input" onChange={handleFileSelect} />
                 <Box>
