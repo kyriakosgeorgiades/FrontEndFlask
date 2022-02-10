@@ -3,8 +3,10 @@ import React from 'react';
 import Header from '../../components/Header';
 import './style.scss';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 export default function FindCar() {
+    let navigate = useNavigate();
     const [selectedFile, setSelectedFile] = React.useState(null);
     const [carTitle, setCarTitle] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -36,11 +38,15 @@ export default function FindCar() {
         setSelectedFile(event.target.files[0])
     }
 
+    const handleSearch = () => {
+        navigate(`/cars/${carTitle}`, { replace: false } );
+    }
+
   return (
         <>
             <Header title="Find Car" />
             <Box py="5em" m="0 auto" height="85vh" maxWidth="30%">
-                <Input placeholder='Car Title' value={carTitle || ""} onChange={ e => setCarTitle(e.target.value)} size='lg' mb="2em" />
+                <Input placeholder='Car Title' value={carTitle || ""} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} onChange={ e => setCarTitle(e.target.value)} size='lg' mb="2em" />
                 <input type="file" className="custom-file-input" onChange={handleFileSelect} />
                 <Box>
                     {
