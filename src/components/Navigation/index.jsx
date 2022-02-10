@@ -37,7 +37,7 @@ export default function Navigation() {
                         <Heading fontSize="3rem">C-Rentals</Heading>  
                     </Link>
                     <HStack spacing={20}>
-                        <Link to="/admin">
+                        <Link to="/admin/manage-listings">
                             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Manage Listings</Text>
                         </Link>
                         <Link to="/admin">
@@ -49,7 +49,7 @@ export default function Navigation() {
                         <Link to="/admin">
                             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Sign Out</Text>
                         </Link>
-                        <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Hi,  Admin</Text>
+                        <Text fontSize="1.8rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Hi,  Admin</Text>
                     </HStack>
                     </>
                 )

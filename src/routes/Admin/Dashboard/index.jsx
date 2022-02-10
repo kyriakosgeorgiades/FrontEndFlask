@@ -1,12 +1,28 @@
 import { Box, HStack, SimpleGrid, Spacer, Text } from '@chakra-ui/react';
 import React from 'react';
 import Header from '../../../components/Header';
+import Lottie from 'react-lottie';
+import animationData from '../../../lotties/car-dashboard.json';
 
 export default function AdminDashboard() {
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+      };
+
   return (
     <>
         <Header title="Overview" />
         <Box py="5em" m="0 auto" maxWidth="80%" h="100vh">
+            <Lottie 
+                options={defaultOptions}
+                height={100}
+                width={100}
+            />
             <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
                 <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" bg="#35495F" borderRadius="10" p="4em 2em" _hover={{ transform: 'scale(1.05)', transition: 'all 300ms ease-in-out' }}>
                     <HStack>

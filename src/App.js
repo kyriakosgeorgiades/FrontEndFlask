@@ -15,6 +15,7 @@ import UserContext from './contexts/user';
 import Cars from './routes/Cars/list';
 import FindCar from './routes/FindCar';
 import AdminDashboard from './routes/Admin/Dashboard';
+import ManageListings from './routes/Admin/ManageListings';
 
 function App() {
   const [user, setUser] = useState([]);
@@ -50,7 +51,7 @@ function App() {
 
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/manage-listings" element={<PricePrediction />} />
+            <Route path="/admin/manage-listings" element={<ManageListings />} />
           </Routes>
         </BrowserRouter>
       </>
