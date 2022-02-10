@@ -40,11 +40,11 @@ export default function Navigation() {
                         <Link to="/admin/manage-listings">
                             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Manage Listings</Text>
                         </Link>
-                        <Link to="/admin">
+                        <Link to="/admin/sell-car">
                             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Sell Car</Text>
                         </Link>
-                        <Link to="/admin">
-                            <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Settings</Text>
+                        <Link to="/admin/profile">
+                            <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Profile</Text>
                         </Link>
                         <Link to="/admin">
                             <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Sign Out</Text>
