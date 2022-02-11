@@ -37,7 +37,7 @@ export default function Register() {
       .then(response => {
         if (response.status === 200) {
           console.log(response)
-          dispatchUserEvent('LOGIN', { User: response.user_id });
+          dispatchUserEvent('LOGIN', { User: response.data.user_id });
           if (response.data.is_admin === 1) {
             navigate('/admin');
           } else {
