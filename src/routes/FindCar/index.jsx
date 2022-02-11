@@ -1,4 +1,4 @@
-import { Box, Button, Input } from '@chakra-ui/react';
+import { Box, Button, HStack, Input, Stack } from '@chakra-ui/react';
 import React from 'react';
 import Header from '../../components/Header';
 import './style.scss';
@@ -10,6 +10,7 @@ export default function FindCar() {
     const [selectedFile, setSelectedFile] = React.useState(null);
     const [carTitle, setCarTitle] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [carID, setCarID] = React.useState(false);
     
     /**
      * This function handles calling the api to 
@@ -40,6 +41,25 @@ export default function FindCar() {
             console.log(error)
         }
     }
+
+    const handleSearchName = async (event) => {
+        event.preventDefault()
+        const formData = new FormData();
+        formData.append("name", carTitle);
+        try{
+            const request = await axios({
+                method : "post",
+                url: "http://127.0.0.1:5000/car/getID",
+                data : formData,
+                headers : { "Content-Type": "multipart/form-data" },
+            });
+            console.log(request.data["ID"]);
+            setCarID(request.data)    
+            navigate(`/cars/${request.data["ID"]}`, { replace: false } );
+        } catch (error){
+            console.log(error)
+        }
+     }
 
     /**
      * This function handles updating the 
@@ -84,22 +104,42 @@ export default function FindCar() {
                         >
                             Submit
                         </Button> 
-                    : <Button 
-                            className="find-btn"
-                            cursor="none" 
-                            _hover={{ bg: "transparent" }} 
-                            py={8} 
-                            px={20} 
-                            bg="transparent" 
-                            border="1px solid black" 
-                            m="0 auto" 
-                            mb="5em" 
-                            mt="2em" 
-                            onClick={handleSubmit}
-                            fontSize="1.5rem"
-                        >
-                            Submit
-                        </Button>
+                    : <>
+                            <Button
+                                className="find-btn"
+                                cursor="none"
+                                _hover={{ bg: "transparent" }}
+                                py={8}
+                                px={20}
+                                bg="transparent"
+                                border="1px solid black"
+                                m="0 auto"
+                                mb="5em"
+                                mt="2em"
+                                onClick={handleSubmit}
+                                fontSize="1.5rem"
+                            >
+                                Submit
+                            </Button>
+                            &nbsp;&nbsp;
+                            <Button
+                                className="find-btn"
+                                cursor="none"
+                                _hover={{ bg: "transparent" }}
+                                py={8}
+                                px={20}
+                                bg="transparent"
+                                border="1px solid black"
+                                m="0 auto"
+                                mb="5em"
+                                mt="2em"
+                                onClick={handleSearchName}
+                                fontSize="1.5rem"
+                            >
+                                    Search
+                            </Button>
+                        </>
+                        
                     }
                 </Box>
             </Box>

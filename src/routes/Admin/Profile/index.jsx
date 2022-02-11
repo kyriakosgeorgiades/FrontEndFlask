@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, HStack, Input, Select, Stack, Text } from '@chakra-ui/react';
+import { Avatar, Box, Center, HStack, Input, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 import Header from '../../../components/Header';
 
