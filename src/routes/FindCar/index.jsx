@@ -84,63 +84,65 @@ export default function FindCar() {
   return (
         <>
             <Header title="Find Car" />
-            <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" py="5em" m="0 auto" borderRadius="10" p="4em 2em" my="3em"  maxWidth="50%">
-                <Input placeholder='Car Title' value={carTitle || ""} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} onChange={ e => setCarTitle(e.target.value)} size='lg' mb="2em" />
-                <input type="file" className="custom-file-input" onChange={handleFileSelect} />
-                <Box>
-                    {
-                        isLoading ? <Button 
-                            py={8} 
-                            px={20} 
-                            mb="5em" 
-                            mt="2em" 
-                            fontSize="1.5rem"
-                            isLoading
-                            loadingText='Loading'
-                            colorScheme='black'
-                            variant='outline'
-                            _focus={{ outline: 'none', border: "none" }}
-                            spinnerPlacement='start'
-                        >
-                            Submit
-                        </Button> 
-                    : <>
-                            <Button
-                                className="find-btn"
-                                cursor="none"
-                                _hover={{ bg: "transparent" }}
-                                py={8}
-                                px={20}
-                                bg="transparent"
-                                border="1px solid black"
-                                m="0 auto"
-                                mb="5em"
-                                mt="2em"
-                                onClick={handleSubmit}
+            <Box h="80vh">
+                <Box boxShadow="0 10px 20px rgb(0 0 0 / 41%)" py="5em" m="0 auto" borderRadius="10" p="4em 2em" my="3em"  maxWidth="50%">
+                    <Input placeholder='Car Title' value={carTitle || ""} onKeyPress={(e) => e.key === 'Enter' && handleSearch()} onChange={ e => setCarTitle(e.target.value)} size='lg' mb="2em" />
+                    <input type="file" className="custom-file-input" onChange={handleFileSelect} />
+                    <Box>
+                        {
+                            isLoading ? <Button 
+                                py={8} 
+                                px={20} 
+                                mb="5em" 
+                                mt="2em" 
                                 fontSize="1.5rem"
+                                isLoading
+                                loadingText='Loading'
+                                colorScheme='black'
+                                variant='outline'
+                                _focus={{ outline: 'none', border: "none" }}
+                                spinnerPlacement='start'
                             >
                                 Submit
-                            </Button>
-                            &nbsp;&nbsp;
-                            <Button
-                                className="find-btn"
-                                cursor="none"
-                                _hover={{ bg: "transparent" }}
-                                py={8}
-                                px={20}
-                                bg="transparent"
-                                border="1px solid black"
-                                m="0 auto"
-                                mb="5em"
-                                mt="2em"
-                                onClick={handleSearchName}
-                                fontSize="1.5rem"
-                            >
-                                    Search
-                            </Button>
-                        </>
-                        
-                    }
+                            </Button> 
+                        : <>
+                                <Button
+                                    className="find-btn"
+                                    cursor="none"
+                                    _hover={{ bg: "transparent" }}
+                                    py={8}
+                                    px={20}
+                                    bg="transparent"
+                                    border="1px solid black"
+                                    m="0 auto"
+                                    mb="5em"
+                                    mt="2em"
+                                    onClick={handleSubmit}
+                                    fontSize="1.5rem"
+                                >
+                                    Submit
+                                </Button>
+                                &nbsp;&nbsp;
+                                <Button
+                                    className="find-btn"
+                                    cursor="none"
+                                    _hover={{ bg: "transparent" }}
+                                    py={8}
+                                    px={20}
+                                    bg="transparent"
+                                    border="1px solid black"
+                                    m="0 auto"
+                                    mb="5em"
+                                    mt="2em"
+                                    onClick={handleSearchName}
+                                    fontSize="1.5rem"
+                                >
+                                        Search
+                                </Button>
+                            </>
+                            
+                        }
+                    </Box>
                 </Box>
             </Box>
         </>
