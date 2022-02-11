@@ -84,10 +84,12 @@ export default function Register() {
 
       axios(options)
         .then(response => {
-          if (response.status === 200) {
+          console.log("IN REGISTER")
+          console.log(response)
+          if (response.data.status === 200) {
             handleLogin();
           } else {
-            alert(response.message);
+            alert(response.data.message);
           }
         }).catch(error => {
           console.error(error);
