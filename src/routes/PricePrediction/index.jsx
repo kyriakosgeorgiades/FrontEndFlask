@@ -77,7 +77,7 @@ export default function PricePrediction() {
                         }
                     }
                 });
-                alert("Success!")
+                alert("Success! The price is in GBP: " + response.data.Price)
             }).catch(error => {
                 console.error(error);
                 alert("Error!")
