@@ -35,9 +35,8 @@ export default function Register() {
 
     axios(options)
       .then(response => {
-        if (response.status === 200) {
-          console.log(response)
-          dispatchUserEvent('LOGIN', { User: response.data.user_id });
+        if (response.data.status === 200) {
+          dispatchUserEvent('LOGIN', { User: response.data });
           if (response.data.is_admin === 1) {
             navigate('/admin');
           } else {
@@ -54,17 +53,6 @@ export default function Register() {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    /*
-    if (inputs.password === inputs.confirm_password) {
-      alert(`Forename: ${inputs.forename} & Surname: ${inputs.surname} & Email: ${inputs.email} & Password: ${inputs.password} & Confirm: ${inputs.confirm_password}`);
-      let user = JSON.parse(`{ "email":"${inputs.email}" , "password":"${inputs.password}" }`);
-      dispatchUserEvent('LOGIN', { User: user });
-      navigate('/');
-    } else {
-      alert('Passwords must match.');
-    }
-    */
 
     if (inputs.password === inputs.confirm_password) {
       const options = {
@@ -132,7 +120,7 @@ export default function Register() {
                     </FormControl>
                   </Box>
                   <Box>
-                    <FormControl id="lastName">
+                    <FormControl id="lastName" isRequired>
                       <FormLabel className="w__login-label">Surname</FormLabel>
                       <Input type="text" name='surname' placeholder='Surname' onChange={e => handleForm(e)} />
                     </FormControl>

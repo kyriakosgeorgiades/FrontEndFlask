@@ -22,13 +22,6 @@ export default function Login() {
   const handleSubmit = event => {
     event.preventDefault();
 
-    /*
-    alert(`Email: ${inputs.email} & Password: ${inputs.password}`);
-    let user = JSON.parse(`{ "email":"${inputs.email}" , "password":"${inputs.password}" }`);
-    dispatchUserEvent('LOGIN', { User: user });
-    navigate('/');
-    */
-
     const options = {
       url: process.env.REACT_APP_LOGIN,
       method: 'POST',
@@ -44,17 +37,15 @@ export default function Login() {
 
     axios(options)
       .then(response => {
-        if (response.status === 200) {
-          console.log(response)
-          console.log("is_admin: " + response.data.is_admin)
-          dispatchUserEvent('LOGIN', { User: response.data.user_id });
+        if (response.data.status === 200) {
+          dispatchUserEvent('LOGIN', { User: response.data });
           if (response.data.is_admin === 1) {
             navigate('/admin');
           } else {
             navigate('/');
           }
         } else {
-          alert(response.message);
+          alert(response.data.message);
         }
       }).catch(error => {
         console.error(error);
