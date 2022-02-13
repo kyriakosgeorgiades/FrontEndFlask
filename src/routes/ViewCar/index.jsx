@@ -1,19 +1,27 @@
+// import required librarys
 import React, { useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Text, Box, Flex, Image, Stack, HStack, Spacer, Center } from '@chakra-ui/react';
+
+// import stylesheet
 import './style.scss';
 
+// import header file
 import Header from '../../components/Header';
 
 export default function ViewCar() {
+  // defines required variables 
   const [car, setCar] = React.useState([]);
   const [alternative_cars, setAlternatives] = React.useState([]);
   const [status, setStatus] = React.useState(null);
   const { id } = useParams();
   
+  // handles display component showing alternative car info from request
   function displayAlternatives(index) {
+    // if alternative car at index specified exists
     if (alternative_cars[index]) {
+      // returns a card component with the alternative car info
       return (
         <>
           <Flex ml='5vw' mr='5vw' mt='50px' justifyContent='center'>
@@ -47,6 +55,7 @@ export default function ViewCar() {
         </>
       )
     } else {
+      // if no alternative cars exist, returns a message indicating so
       if (index === 0) {
         return (
           <>
@@ -61,8 +70,11 @@ export default function ViewCar() {
     }
   };
 
+  // upon rendering the page
   useEffect(() => {
+    // if no request has been previously made
     if (!status) {
+      // request parameters
       const options = {
         url: process.env.REACT_APP_VIEW_CAR + id,
         method: 'GET',
@@ -72,13 +84,16 @@ export default function ViewCar() {
         }
       };
 
+      // using axios to handle backend request
       axios(options)
         .then(response => {
+          // if request succeeds
           if (response.status === 200) {
-            console.log(response.data.cars[0])
+            // updates state info with request data
             setCar(response.data.cars[0])
             setStatus(response.status)
-
+            
+            // request parameters
             const options = {
               url: process.env.REACT_APP_SIMILAR_CARS + "?id=" + response.data.cars[0].car_id,
               method: 'GET',
@@ -88,10 +103,12 @@ export default function ViewCar() {
               }
             };
 
+            // using axios to handle backend request
             axios(options)
               .then(response => {
+                // if request succeeds
                 if (response.status === 200) {
-                  console.log(response.data.cars)
+                  // updates state info with request data
                   setAlternatives(response.data.cars)
                 } else {
                   alert(response.message);
@@ -205,7 +222,6 @@ export default function ViewCar() {
           {displayAlternatives(0)}
           {displayAlternatives(1)}
         </Box>
-
 
       </Flex>
     </>

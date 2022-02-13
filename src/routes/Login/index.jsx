@@ -1,27 +1,35 @@
+// import required librarys
 import React, { useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Flex, Input, Button, Box, Stack, Text, Heading, FormControl, FormLabel, useColorModeValue } from '@chakra-ui/react';
+
+// import stylesheet
 import './style.scss';
 
+// import header file
 import Header from '../../components/Header';
 
+// imports user context functionality
 import UserContext from '../../contexts/user';
 
 export default function Login() {
+  // defines required variables 
   const { dispatchUserEvent } = useContext(UserContext);
   const [inputs, setInputs] = React.useState({});
   const navigate = useNavigate();
 
+  // adds form inputs to state variable
   function handleForm(e) {
     const name = e.target.name;
     const value = e.target.value;
     setInputs(values => ({ ...values, [name]: value }))
   }
 
+  // handles login on form submission
   const handleSubmit = event => {
     event.preventDefault();
-
+    // request parameters
     const options = {
       url: process.env.REACT_APP_LOGIN,
       method: 'POST',
@@ -29,16 +37,21 @@ export default function Login() {
         'Accept': 'application/json',
         'Content-Type': 'application/json;charset=UTF-8'
       },
+      // request data
       data: {
         email: inputs.email,
         password: inputs.password
       }
     };
 
+    // using axios to handle backend request
     axios(options)
       .then(response => {
+        // if request succeeds
         if (response.data.status === 200) {
+          // log user into context
           dispatchUserEvent('LOGIN', { User: response.data });
+          // if admin logs in navigate to admin panel
           if (response.data.is_admin === 1) {
             navigate('/admin');
           } else {
