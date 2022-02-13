@@ -61,7 +61,7 @@ export default function Navigation() {
                                     <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Profile</Text>
                                 </Link>
                                 <Link to="/">
-                                    <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Sign Out</Text>
+                                    <Text fontSize="1.5rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Homepage</Text>
                                 </Link>
                                 <Text fontSize="1.8rem" _hover={{ transform: 'translateY(-5px)', transition: 'all 300ms linear' }}>Hi,  Admin</Text>
                             </HStack>
