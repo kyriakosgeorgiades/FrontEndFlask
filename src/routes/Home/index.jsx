@@ -7,8 +7,17 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Navigation from '../../components/Navigation';
 import CarCardItem from '../../components/CarCardItem';
+import axios from "axios";
 
 export default function Home() {
+  const [cars, setCars] = React.useState([]);
+
+  React.useEffect(() => {
+    axios.get(process.env.REACT_APP_GET_CARS)
+    .then((res) => setCars(res))
+    .catch(err => console.err(err));
+  }, []);
+
   const boxRef = React.useRef(); // This variable helps to target the DOM elements for the landing page animation
   gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +79,9 @@ export default function Home() {
     </Box>
     <Box id="car-listings">
       <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
-        <CarCardItem />
-        <CarCardItem />
-        <CarCardItem />
+        {
+          cars?.cars.map((car, index) => (index < 3) ? <CarCardItem key={index} car={car} /> : null )
+        }
       </SimpleGrid>
       <Link to="/cars">
         <Box py={5} px={20} border="1px solid black" maxWidth="30%" textAlign="center" m="0 auto" mb="5em" className="c__hero-btn-left">
