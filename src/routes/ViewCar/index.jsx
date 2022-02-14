@@ -135,8 +135,8 @@ export default function ViewCar() {
       <Flex align={'center'} justify={'center'}>
         <Box w='25vw' h='92.5vh' bg='gray.200' />
         <Box className="w__car" w='50vw' h='92.5vh' bg='white'>
-          <Link to="/">
-            <Text className="w__car-link" _hover={{ textDecoration: 'underline', color: 'blue' }}>🠔 Return to homepage.</Text>
+          <Link to="/cars">
+            <Text className="w__car-link" _hover={{ textDecoration: 'underline', color: 'blue' }}>🠔 Return to search</Text>
           </Link>
 
           <HStack mt='25px'>

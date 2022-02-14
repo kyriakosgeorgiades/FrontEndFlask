@@ -11,12 +11,34 @@ import axios from "axios";
 
 export default function Home() {
   const [cars, setCars] = React.useState([]);
+  const [status, setStatus] = React.useState(null);
 
   React.useEffect(() => {
-    axios.get(process.env.REACT_APP_GET_CARS)
-    .then((res) => setCars(res))
-    .catch(err => console.err(err));
-  }, []);
+    if (!status) {
+      const options = {
+        url: process.env.REACT_APP_GET_CARS,
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      };
+
+      // using axios to handle backend request
+      axios(options)
+        .then(response => {
+          // if request succeeds
+          if (response.status === 200) {
+            // updates state info with request data
+            setCars(response.data.cars)
+            setStatus(response.status)
+          }
+        }).catch(error => {
+          console.error(error);
+          alert("System error during alternative cars request.");
+        });
+    }
+  }, [status]);
 
   const boxRef = React.useRef(); // This variable helps to target the DOM elements for the landing page animation
   gsap.registerPlugin(ScrollTrigger);
@@ -43,7 +65,7 @@ export default function Home() {
     //     scrub: true
     //   }
     // });
-  },[]);
+  }, []);
 
 
   React.useEffect(() => {
@@ -54,47 +76,47 @@ export default function Home() {
     gsap.from('.c__hero-btn-right', { x: 500, duration: 1 });
   }, []);
 
-  
+
   return (
     <>
-    <Box className="w__header" h="100vh" ref={boxRef} pos="relative">
-      <Navigation />
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
-          <Heading fontSize="4rem" color="white" className="w__hero-title-text" data-testid="header">Welcome to C-Rentals, get your dream car now!</Heading>
-          <HStack spacing={10}>
-            <ReactLink to="car-listings" smooth={true} duration={500}>
-              <Box py={5} px={20} border="1px solid white" borderRadius="30" className="c__hero-btn-left">
-                <Text color="white" fontWeight="bold">VIEW LISTINGS</Text>
-              </Box>
-            </ReactLink>
-            <Link to="/find-car" data-testid="find-car-btn">
-              <Box py={5} px={20} bg="white" border="1px solid white" borderRadius="30" className="c__hero-btn-right">
-                <Text color="black" fontWeight="bold">FIND A CAR</Text>
-              </Box>
-            </Link>
-          </HStack>
-        </Stack>
-      </Box>
-    </Box>
-    <Box id="car-listings">
-      <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
-        {
-          cars?.cars.map((car, index) => (index < 3) ? <CarCardItem key={index} car={car} /> : null )
-        }
-      </SimpleGrid>
-      <Link to="/cars">
-        <Box py={5} px={20} border="1px solid black" maxWidth="30%" textAlign="center" m="0 auto" mb="5em" className="c__hero-btn-left">
-          <Text color="black" fontWeight="bold">View More</Text>
+      <Box className="w__header" h="100vh" ref={boxRef} pos="relative">
+        <Navigation />
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
+            <Heading fontSize="4rem" color="white" className="w__hero-title-text" data-testid="header">Welcome to C-Rentals, get your dream car now!</Heading>
+            <HStack spacing={10}>
+              <ReactLink to="car-listings" smooth={true} duration={500}>
+                <Box py={5} px={20} border="1px solid white" borderRadius="30" className="c__hero-btn-left">
+                  <Text color="white" fontWeight="bold">VIEW LISTINGS</Text>
+                </Box>
+              </ReactLink>
+              <Link to="/find-car" data-testid="find-car-btn">
+                <Box py={5} px={20} bg="white" border="1px solid white" borderRadius="30" className="c__hero-btn-right">
+                  <Text color="black" fontWeight="bold">FIND A CAR</Text>
+                </Box>
+              </Link>
+            </HStack>
+          </Stack>
         </Box>
-      </Link>
-    </Box>
-    <Box bg="black">
-      <HStack pt="2em" px="4em" justifyContent="space-between">
-        <Text color="white" fontSize="1.6rem">Copyright 2022</Text>
-        <Text color="white" fontSize="1.6rem">C-Rentals.</Text>
-      </HStack>
-    </Box>
+      </Box>
+      <Box id="car-listings">
+        <SimpleGrid columns={3} spacing={10} py="5em" px="5em">
+          {
+            cars.map((car, index) => (index < 3) ? <CarCardItem key={index} car={car} /> : null)
+          }
+        </SimpleGrid>
+        <Link to="/cars">
+          <Box py={5} px={20} border="1px solid black" maxWidth="30%" textAlign="center" m="0 auto" mb="5em" className="c__hero-btn-left">
+            <Text color="black" fontWeight="bold">View More</Text>
+          </Box>
+        </Link>
+      </Box>
+      <Box bg="black">
+        <HStack pt="2em" px="4em" justifyContent="space-between">
+          <Text color="white" fontSize="1.6rem">Copyright 2022</Text>
+          <Text color="white" fontSize="1.6rem">C-Rentals.</Text>
+        </HStack>
+      </Box>
     </>
   );
 }

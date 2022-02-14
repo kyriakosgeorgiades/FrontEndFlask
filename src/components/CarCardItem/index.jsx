@@ -11,11 +11,8 @@ export default function CarCardItem({ car }) {
             src={car.image_url}
             alt={car.brand} 
             objectFit="cover" 
-            width="100%"
-            maxWidth='418px' 
-            height='300px'
-            borderTopLeftRadius="10" 
-            borderTopRightRadius="10" 
+            w='800px' 
+            h='450px'
           />
           <Stack py="2em" mx="10">
             <HStack justify="space-between">

@@ -4,11 +4,11 @@ import Navigation from '../Navigation';
 
 export default function Header({ title }) {
   return (
-        <Box className="w__header" h="20vh" pos="relative">
+        <Box className="w__header" h="7.5vh" pos="relative">
             <Navigation />
             <Box display="flex" justifyContent="center" alignItems="center">
                 <Stack className="w__hero-title" alignItems="center" textAlign="center" spacing="5em">
-                    <Heading data-testid="header-title" mt="1.5em" fontSize="4rem" color="white" className="w__hero-title-text">{title}</Heading>
+                    <Heading data-testid="header-title" fontSize="4rem" color="white" className="w__hero-title-text">{title}</Heading>
                 </Stack>
             </Box>
         </Box>

@@ -21,7 +21,7 @@ import SellCarAdmin from './routes/Admin/SellCar';
 import Profile from './routes/Admin/Profile';
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
   const dispatchUserEvent = (action, data) => {
     switch (action) {
