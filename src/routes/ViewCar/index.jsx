@@ -155,8 +155,8 @@ export default function ViewCar() {
           </HStack>
 
           <HStack align='top' ml='1vw' mt='2vw'>
-            <Text className="w__car-subtitle" w='180px'>Overview:</Text>
             <Stack py="5em" justify="space-between">
+              <Text className="w__car-subtitle">Overview:</Text>
               <Box w='15vw' display='flex' alignItems='center'>
                 <Image className="w__image-tiny" src={require('../../assets/images/engine_vector.png')} />
                 <Text w='130px' fontWeight="bold" className="w__car-text">Engine Size: </Text>
@@ -184,8 +184,9 @@ export default function ViewCar() {
               </Box>
             </Stack>
 
-            <Text className="w__car-subtitle" w='180px'>Specifications:</Text>
+
             <Stack py="6em" justify="space-between">
+              <Text className="w__car-subtitle">Specifications:</Text>
               <Box w='15vw' display='flex' alignItems='center'>
                 <Image className="w__image-tiny" src={require('../../assets/images/check_vector.png')} />
                 <Text w='180px' fontWeight="bold" className="w__car-text">Engine Power: </Text>
