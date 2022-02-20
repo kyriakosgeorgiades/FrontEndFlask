@@ -35,7 +35,7 @@ export default function Home() {
           }
         }).catch(error => {
           console.error(error);
-          alert("System error during alternative cars request.");
+          alert("System error whilst fetching cars from db.");
         });
     }
   }, [status]);

@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Text, Box, Flex, Image, Stack, HStack, Spacer, Center } from '@chakra-ui/react';
+import { Text, Box, Flex, Image, Stack, HStack, Spacer, Center, AspectRatio } from '@chakra-ui/react';
+import ReactPlayer from "react-player"
 
 // import stylesheet
 import './style.scss';
@@ -13,10 +14,11 @@ import Header from '../../components/Header';
 export default function ViewCar() {
   // defines required variables 
   const [car, setCar] = React.useState([]);
+  const [video, setVideo] = React.useState(null);
   const [alternative_cars, setAlternatives] = React.useState([]);
   const [status, setStatus] = React.useState(null);
   const { id } = useParams();
-  
+
   // handles display component showing alternative car info from request
   function displayAlternatives(index) {
     // if alternative car at index specified exists
@@ -91,8 +93,9 @@ export default function ViewCar() {
           if (response.status === 200) {
             // updates state info with request data
             setCar(response.data.cars[0])
+            setVideo(response.data.video_link)
             setStatus(response.status)
-            
+
             // request parameters
             const options = {
               url: process.env.REACT_APP_SIMILAR_CARS + "?id=" + response.data.cars[0].car_id,
@@ -128,12 +131,29 @@ export default function ViewCar() {
     }
   }, [status, id]);
 
+  function displayVideo() {
+    if (video) {
+      return (
+        <>
+        <Spacer />
+        <AspectRatio maxW='560px' ratio={1}>
+          <ReactPlayer
+              url={video}
+            />
+          </AspectRatio>
+        </>
+      )
+    }
+  }
+
   return (
     <>
       <Header />
 
       <Flex align={'center'} justify={'center'}>
-        <Box w='25vw' h='92.5vh' bg='gray.200' />
+        <Box w='25vw' h='92.5vh' bg='gray.200' >
+          { displayVideo() }
+        </Box>
         <Box className="w__car" w='50vw' h='92.5vh' bg='white'>
           <Link to="/cars">
             <Text className="w__car-link" _hover={{ textDecoration: 'underline', color: 'blue' }}>🠔 Return to search</Text>
