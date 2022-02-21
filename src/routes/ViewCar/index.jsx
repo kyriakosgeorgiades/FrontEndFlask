@@ -135,10 +135,12 @@ export default function ViewCar() {
     if (video) {
       return (
         <>
-        <Spacer />
         <AspectRatio maxW='560px' ratio={1}>
           <ReactPlayer
+              controls={true}
               url={video}
+              width='25vw'
+              style={{ padding: '10px' }}
             />
           </AspectRatio>
         </>
