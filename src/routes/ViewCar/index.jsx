@@ -15,6 +15,7 @@ export default function ViewCar() {
   // defines required variables 
   const [car, setCar] = React.useState([]);
   const [video, setVideo] = React.useState(null);
+  const [warranty, setWarranty] = React.useState(null);
   const [alternative_cars, setAlternatives] = React.useState([]);
   const [status, setStatus] = React.useState(null);
   const { id } = useParams();
@@ -94,6 +95,7 @@ export default function ViewCar() {
             // updates state info with request data
             setCar(response.data.cars[0])
             setVideo(response.data.video_link)
+            setWarranty(response.data.warranty)
             setStatus(response.status)
 
             // request parameters
@@ -148,6 +150,16 @@ export default function ViewCar() {
     }
   }
 
+  function displayWarranty() {
+    if (warranty) {
+      return (
+        <>
+          <Center className="w__car-subtitle">{warranty}</Center>
+        </>
+      )
+    }
+  }
+
   return (
     <>
       <Header />
@@ -171,6 +183,8 @@ export default function ViewCar() {
                 <Spacer />
                 <Text className="w__car-subtitle">Available at:</Text>
                 <Text className="w__car-title">£{car.price}</Text>
+                <Spacer />
+                {displayWarranty()}
                 <Spacer />
               </Stack>
             </Flex>
@@ -232,7 +246,7 @@ export default function ViewCar() {
             </Stack>
           </HStack>
 
-          <Center mt='50px' className="w__car-subtitle">Contact the seller:</Center>
+          <Center mt='25px' className="w__car-subtitle">Contact the seller:</Center>
           <Center className="w__car-title">01753 665431</Center>
         </Box>
 
